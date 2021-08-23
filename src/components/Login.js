@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router'
+import cookie from "cookie"
 import {
   TextField,
   Button,
@@ -28,30 +29,44 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Container maxWidth="sm">
-          <form className="login-form" onSubmit={this.login}>
-            <TextField
-              required
-              onChange={this.handleTextChange}
-              value={this.state.username}
-              name="username"
-              label="Username"
-              type="text" />
-            <TextField
-              required
-              onChange={this.handleTextChange}
-              value={this.state.password}
-              name="password"
-              label="Password"
-              type="password" />
-            <Button
-              type="submit"
-              className="login-button"
-              variant="contained"
-              color="primary">Login</Button>
-          </form>
-        </Container>
-      </div>
+      <Container maxWidth="sm">
+        <form className="login-form" onSubmit={this.login}>
+          
+          <TextField
+            required
+            onChange={this.handleTextChange}
+            value={this.state.username}
+            name="username"
+            label="Username"
+            type="text" />
+          
+          <TextField
+            required
+            onChange={this.handleTextChange}
+            value={this.state.password}
+            name="password"
+            label="Password"
+            type="password" />
+          
+          <Button
+            type="submit"
+            className="login-button"
+            variant="contained"
+            color="primary">Login
+          </Button>
+          
+          <TextField required onChange={this.handleTextChange} value={this.state.username} name="username" label="Username" type="text" />
+          
+          <TextField required onChange={this.handleTextChange} value={this.state.password} name="password" label="Password" type="password" />
+          
+          <Button type="submit" className="login-button" variant="contained" color="primary">
+            Login
+          </Button>
+
+        </form>
+      </Container>
+    </div>
+    
     );
   }
 }

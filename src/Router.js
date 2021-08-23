@@ -13,26 +13,21 @@ const checkAuth = () => {
 }
 
 
-const ProtectedRoute = ({component: Component, ...rest}) =>{
-    return (
-        <Route
-        {...rest}
-        render={(props) => checkAuth()
-            ? <Component {...props} />
-            : <Redirect to="/login" />}
-        />
-    )
-}
+const ProtectedRoute = ({ component: Component, ...rest }) => {
+    return <Route {...rest} 
+    render={props => (checkAuth() ? 
+    <Component {...props} /> : <Redirect to="/login" />)} />
+  }
 
-const Router = () => {
-    return (
-        <Switch>
-            <Route path="/login" component={Login} />
-            <Route exact path="/" component={Home} />
-            <Route path="/about" component={About} />
-            <Route path="/car/:id" component={Car} />
-        </Switch>
-    );
-};
+
+  return (
+    <Switch>
+      <Route path="/login" component={Login} />
+      <ProtectedRoute path="/about" component={About} />
+      <ProtectedRoute path="/" component={Home} />
+      <ProtectedRoute path="/car/:id" component={Car} />
+    </Switch>
+  )
+
 
 export default Router;
